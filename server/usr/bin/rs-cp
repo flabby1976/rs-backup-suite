@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+set -x
+set -u
+
+mysource=$2
+mydest=$3
+
+mypath=$(dirname $mydest)
+
+today=$(date "+%Y-%m-%d-%H-%M-%S")
+
+cp -al $mysource $mypath/$today
+ln -s $mypath/$today $mydest
+
+
+
+
+

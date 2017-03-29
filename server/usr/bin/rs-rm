@@ -32,6 +32,28 @@ if [ "$1" == "" ]; then
 	exit
 fi
 
-chmod -R +w "${@: -1}"
-rm ${@}
+# chmod -R +w "${@: -1}"
+# rm ${@}
+
+set -e
+set -u
+set -x
+
+args=$#           # Number of args passed.
+lastarg=${!args}
+
+noslash=${lastarg%/}
+slash=$noslash/
+
+#real name of the directory  to which the link points
+realname=$(realpath $noslash)
+
+if [ -e $realname ]; then
+  rm -r $realname
+fi
+
+if [ -L $noslash ]; then
+  unlink $noslash
+fi
+
 
