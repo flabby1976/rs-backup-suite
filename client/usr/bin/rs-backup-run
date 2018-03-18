@@ -695,6 +695,13 @@ elif $_FORCE_RUN; then
 fi
 
 run_pre_hook
+
+_exit_code=$?
+if [ $_exit_code -gt 0 ]; then
+    write_log 1 "pre-hook failed"
+	clean_exit 1
+fi
+
 create_runfile
 
 # Backup exit code (0 if all backups have finished successfully)
