@@ -80,6 +80,7 @@ if [[ $MODE == "install" ]]; then
 		echo
 		echo "Installing cron scripts..."
 		if [ -d /etc/cron.daily ]; then
+			$CP ./server/etc/cron.hourly/* /etc/cron.hourly/
 			$CP ./server/etc/cron.daily/* /etc/cron.daily/
 			$CP ./server/etc/cron.weekly/* /etc/cron.weekly/
 			$CP ./server/etc/cron.monthly/* /etc/cron.monthly/
