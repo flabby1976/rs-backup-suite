@@ -35,8 +35,7 @@ fi
 # chmod -R +w "${@: -1}"
 # rm ${@}
 
-args=$#           # Number of args passed.
-lastarg=${!args}
+lastarg=${@: -1}
 
 noslash=${lastarg%/}
 slash=$noslash/
