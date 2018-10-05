@@ -1,9 +1,5 @@
 #!/bin/bash
 
-set -e
-set -x
-set -u
-
 mysource=$2
 mydest=$3
 
