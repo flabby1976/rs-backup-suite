@@ -35,10 +35,6 @@ fi
 # chmod -R +w "${@: -1}"
 # rm ${@}
 
-set -e
-set -u
-set -x
-
 args=$#           # Number of args passed.
 lastarg=${!args}
 
