@@ -447,6 +447,10 @@ perform_backup() {
     local exit_code
     local tee_device="/dev/tty"
 
+    # check whether we are interactive
+    # https://stackoverflow.com/questions/911168/how-to-detect-if-my-shell-script-is-running-through-a-pipe
+    if [ -t 1 ] ; then tee_device="/dev/tty"; else tee_device="/dev/null"; fi
+
     if $_DRY_RUN; then
         rsync_opts+=" --dry-run"
     fi
@@ -459,7 +463,7 @@ perform_backup() {
         tee_device="/dev/null"
         rsync_opts+=" --quiet"
     fi
-
+    
     if [ "${username}" == "" ]; then
         username=$(id -un)
     fi
